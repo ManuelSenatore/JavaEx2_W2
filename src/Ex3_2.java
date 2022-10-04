@@ -49,7 +49,6 @@ public class Ex3_2 {
                         System.out.println("Inserisci il nome del contatto che vuoi eliminare");
                         String nome = scanner.nextLine();
                         removeContatto(nome, hmap);
-                        System.out.println("Hai rimosso il contatto. ");
 
                     } catch (Exception e) {
                         System.out.println("Il nome inserito non è valido. " + e.getMessage());
@@ -101,12 +100,23 @@ public class Ex3_2 {
     }
 
     public static void removeContatto(String string, HashMap<String, Integer> hM) {
-        hM.remove(string);
+        if (hM.containsKey(string)){
+            hM.remove(string);
+            System.out.println("Hai rimosso il contatto. ");
+        } else {
+            System.out.println("Contatto non esistente");
+        }
+
     }
 
     public static void trovaContatto(String string, HashMap<String, Integer> hM) {
-        int var = hM.get(string);
-        System.out.println("Il numero di " + string + " è " + var);
+        if (hM.containsKey(string)){
+            int var = hM.get(string);
+            System.out.println("Il numero di " + string + " è " + var);
+        } else {
+            System.out.println("Nome non esistente");
+        }
+
     }
 
     public static void findContattobynumber(int number, HashMap<String, Integer> hM) {
